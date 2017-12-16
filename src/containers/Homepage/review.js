@@ -52,7 +52,9 @@ class Review extends React.Component{
     const {review} = this.props;
     const {show, text} = this.state;
 
-    const {author_name, comment, date, id, rating, title} = review ;
+    const {author_name, comment, date, website, rating, title} = review;
+
+
 
     return (
 
@@ -63,7 +65,7 @@ class Review extends React.Component{
             <div className="flex">
 
               <div className="icons">
-                <img src="../../images/synup/yelp.com.png" alt=""/>
+                <img src={"../../images/synup/"+website +".png"} alt=""/>
                 <span>Yelp</span>
 
               </div>
@@ -76,7 +78,7 @@ class Review extends React.Component{
 
             </div>
 
-            <p className="created_on">Created on {date}</p>
+            <p className="created_on">Rated on {date}</p>
 
           </div>
 

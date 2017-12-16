@@ -75,8 +75,6 @@ export function postReviews(locationId, review_id, data){
 
 
 
-
-
 function flattenArray(arr){
 
   let newArr = [];
