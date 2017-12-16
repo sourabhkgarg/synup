@@ -191,12 +191,12 @@
   padding: 25px 0;
 }
 
-.interaction:first-child{
+.is_active{
+
   border-bottom: 5px solid #084377;
 }
-
 .interaction:last-child{
-  border: none;
+  border-right: none;
 }
 
 .count{

@@ -26,10 +26,11 @@ class Main extends React.Component{
   constructor(props) {
     super(props);
     this.postResponse= this.postResponse.bind(this);
-    this.state= {dateShow : false, dateIndex : 0, rateIndex : 0, rateShow :false};
+    this.state= {dateShow : false, dateIndex : 0, rateIndex : 0, website: "",  siteShow :false};
     this.toggle  = this.toggle.bind(this);
-    this.filterByStars = this.filterByStars.bind(this);
+    this.filterBySite = this.filterBySite.bind(this);
     this.filterByDate = this.filterByDate.bind(this);
+    this.filterByStars = this.filterByStars.bind(this);
 
   }
 
@@ -49,18 +50,24 @@ class Main extends React.Component{
 
 
 
-  filterByStars(index){
+  filterBySite(site){
 
-    this.setState({rateIndex : index});
-    this.toggle("star");
+    this.setState({website : site});
+    this.toggle("site");
   }
 
 
+  filterByStars(index){
+
+    this.setState({rateIndex : index});
+
+  }
+
   toggle(type){
-    if(type === "star"){
-      this.setState({rateShow : !this.state.rateShow});
-    }else{
+    if(type === "date"){
       this.setState({dateShow : !this.state.dateShow});
+    }else{
+      this.setState({siteShow : !this.state.siteShow});
     }
   }
 
@@ -69,11 +76,13 @@ class Main extends React.Component{
   render () {
 
     const {reviews} = this.props;
-    const {dateShow, dateIndex, rateShow , rateIndex} = this.state;
+    const {dateShow, dateIndex, siteShow , website, rateIndex} = this.state;
 
     let selectedDate = days[dateIndex];
-    let rating = stars[rateIndex];
+    let filterWebsite = website;
     let filteredTimeStamp = 0;
+
+
 
     if(selectedDate.date !== null) {
        filteredTimeStamp = moment(selectedDate.date).format('x');
@@ -82,13 +91,17 @@ class Main extends React.Component{
 
       let reviewArr = [];
 
-      reviews.forEach((item, i) =>{
+      reviews.reviews.forEach((item, i) =>{
 
          let timeStamp = moment(item.date).format('x');
 
-        if(item.rating >= rating && timeStamp >= filteredTimeStamp) {
+        if( timeStamp >= filteredTimeStamp &&
+          (!filterWebsite || filterWebsite === "All Platforms" || filterWebsite === item.website)
+          && (!rateIndex || item.rating === rateIndex )
+
+        ) {
           reviewArr.push(<Review review={item} postResponse={this.postResponse} key={i}/>);
-        }
+          }
 
     });
 
@@ -102,9 +115,9 @@ class Main extends React.Component{
 
 
 
-    let ratings = stars.map((star, i) => {
+    let sites = reviews.website.map((item, i) => {
       return (
-        <div onClick={this.filterByStars.bind(this, i, star )}  key={i} >{star  === 1 ? "All" : star}</div>
+        <div onClick={this.filterBySite.bind(this, item )}  key={i} >{item}</div>
       );
     });
 
@@ -119,7 +132,7 @@ class Main extends React.Component{
 
         <div className="interaction_container flex flex_center justify_between interaction_div">
 
-          <div className="flex interaction">
+          <div className= {rateIndex === 0 ?  "flex interaction is_active" :"flex interaction" }   onClick={this.filterByStars.bind(this, 0)}>
 
           <div className="">
             <img src="../../images/synup/interactions-all.svg" alt=""/>
@@ -133,10 +146,10 @@ class Main extends React.Component{
 
         </div>
 
-          <div className="flex interaction">
+          <div className= {rateIndex === 3 ?  "flex interaction is_active" :"flex interaction" } onClick={this.filterByStars.bind(this, 3)} >
 
             <div>
-              <img src="../../images/synup/interactions-new.svg" alt=""/>
+              <img src="../../images/synup/interactions-new.svg" alt="" />
 
             </div >
 
@@ -149,10 +162,10 @@ class Main extends React.Component{
 
           </div>
 
-          <div className="flex" className="flex interaction">
+          <div className= {rateIndex === 4 ?  "flex interaction is_active" :"flex interaction" } onClick={this.filterByStars.bind(this, 4)}>
 
             <div>
-              <img src="../../images/synup/interactions-positive.svg" alt=""/>
+              <img src="../../images/synup/interactions-positive.svg" alt="" />
 
             </div>
 
@@ -165,10 +178,9 @@ class Main extends React.Component{
 
           </div>
 
-          <div className="flex" className="flex interaction" >
-
+          <div  className= {rateIndex === 2 ? "flex interaction is_active" :"flex interaction" }  onClick={this.filterByStars.bind(this, 2)} >
             <div>
-              <img src="../../images/synup/interactions-negative.svg" alt=""/>
+              <img src="../../images/synup/interactions-negative.svg" alt="" />
 
             </div>
 
@@ -177,7 +189,6 @@ class Main extends React.Component{
               <p>Negative interactions</p>
 
             </div>
-
 
           </div>
 
@@ -211,16 +222,16 @@ class Main extends React.Component{
           </div>
 
 
-          <span className="label">Rating Greater Than</span>
+          <span className="label">From</span>
 
 
 
           <div className="dateDropDown">
 
-            <input contentEditable={false} type="text"  onClick={this.toggle.bind(this, "star")} value={rating === 1 ? "All": rating}  />
+            <input contentEditable={false} type="text"  onClick={this.toggle.bind(this, "site")} value={filterWebsite ? filterWebsite: "All Platforms"}  />
 
-            {rateShow ?   <div className="selectBox">
-              {ratings}
+            {siteShow ?   <div className="selectBox">
+              {sites}
             </div>  : "" }
 
 

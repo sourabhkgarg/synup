@@ -49,8 +49,11 @@ export function fetchReviews(location){
       let parsedResult = JSON.parse(response.text);
 
       let flattenedArray = flattenArray(parsedResult.reviews);
+
       dispatch(dispatchAction(Type.GET_REVIEWS, flattenedArray));
+
       dispatch(dispatchAction(Type.SELECT_LOCATION, location));
+
 
     });
   };
@@ -77,25 +80,29 @@ export function postReviews(locationId, review_id, data){
 function flattenArray(arr){
 
   let newArr = [];
+  let newKeys = ["All Platforms"];
 
   try {
    for (var key in arr){
 
-      if (arr[key].length > 0) {
-          arr[key].forEach((item) => {
+      newKeys.push(key);
 
+      if (arr[key].length > 0) {
+
+        arr[key].forEach((item) => {
+
+          item["website"] = key;
           newArr.push(item);
 
         });
-
       }
 
-    };
+    }
 
   }catch(e){
 
 
   }
-  return newArr;
+  return {website :newKeys, reviews : newArr };
 
 }
