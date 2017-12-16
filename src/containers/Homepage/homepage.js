@@ -117,7 +117,7 @@ class Main extends React.Component{
 
       <div>
 
-        <div className="review_container flex flex_center justify_between interaction_div">
+        <div className="interaction_container flex flex_center justify_between interaction_div">
 
           <div className="flex interaction">
 
