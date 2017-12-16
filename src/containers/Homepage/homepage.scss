@@ -1,0 +1,169 @@
+@import "../../styles/color";
+
+
+
+.author_detail{
+  border-right: 1px solid  rgba(128, 128, 128, 0.3);
+  width: 20%;
+}
+
+.author_comment{
+
+  width: 80%;
+  padding-left: 30px;
+
+
+}
+
+.author_cmt_s{
+  h3{
+    font-size: 20px;
+    color: #606060;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  p{
+    font-style: italic;
+  }
+}
+
+
+.reviews_div{
+  padding: 20px;
+  border: 1px solid #b8b8b8;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  transition: all .4s;
+}
+
+
+.reviews_div:hover{
+  border: 1px solid #d25555;
+}
+
+.review_container{
+  margin: 20px 5%;
+  padding: 0 20px;
+  border :  1px solid lightgrey;
+  border-radius: 5px;
+}
+
+
+.icons{
+  width: 30%;
+  img{
+    max-width: 100%;
+    width: 20px;
+  }
+
+  span{
+    display: block;
+    margin-top: 5px;
+    font-size: 17px;
+    font-weight: 500;
+
+  }
+}
+
+.author_rating{
+  width: 70%;
+  span{
+    font-weight: 500;
+    font-size: 17px;
+  }
+}
+
+.created_on{
+  margin-top: 15px;
+}
+
+.respond_btn, .respond_btn:hover, .respond_btn:focus{
+  background-color: #094276;
+  margin-top: 15px;
+  color: white;
+  padding: 0 40px;
+
+}
+
+.respond_cancel{
+
+  margin-top: 15px;
+  color: gray;
+  padding: 0 40px;
+  border: none;
+  margin-left: 20px;
+}
+
+
+.respond_div{
+
+  margin-top: 20px;
+  textarea{
+    display: block;
+    width: 85%;
+    height: 100px;
+  }
+}
+
+.label{
+  font-size: 16px;
+  font-weight: bold;
+  color: #094276;
+  margin-right: 10px;
+}
+
+.dateDropDown{
+
+  position: relative;
+  height: 48px;
+  width: 200px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+
+
+  input, input:focus{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    color: #094276;
+    background-color: #e5e5e5;
+    border-bottom: 2px solid #909090;
+  }
+
+  .selectBox{
+
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    top : 47px;
+    background-color: #084377;
+
+    div{
+      padding: 10px 20px;
+      cursor: pointer;
+      color: white;
+    }
+
+    div:hover{
+      color: white;
+      background-color: gray;
+    }
+
+  }
+
+
+}
+
+
+.filters{
+  background-color: #e5e5e5;
+  margin : 0 -20px 20px -20px;
+  padding : 5px 20px;
+
+}
