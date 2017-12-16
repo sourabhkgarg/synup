@@ -117,7 +117,69 @@ class Main extends React.Component{
 
       <div>
 
-        <div className="review_container flex flex_center">
+        <div className="review_container flex flex_center justify_between interaction_div">
+
+          <div className="flex interaction">
+
+          <div className="">
+            <img src="../../images/synup/interactions-all.svg" alt=""/>
+          </div>
+
+          <div className="count">
+
+            <h3 className="blue">330</h3>
+            <p>Total interaction</p>
+          </div>
+
+        </div>
+
+          <div className="flex interaction">
+
+            <div>
+              <img src="../../images/synup/interactions-new.svg" alt=""/>
+
+            </div >
+
+            <div className="count">
+              <h3 className="yellow">330</h3>
+              <p>New interactions</p>
+
+            </div>
+
+
+          </div>
+
+          <div className="flex" className="flex interaction">
+
+            <div>
+              <img src="../../images/synup/interactions-positive.svg" alt=""/>
+
+            </div>
+
+            <div className="count">
+              <h3 className="green">330</h3>
+              <p>Positive interactions</p>
+
+            </div>
+
+
+          </div>
+
+          <div className="flex" className="flex interaction" >
+
+            <div>
+              <img src="../../images/synup/interactions-negative.svg" alt=""/>
+
+            </div>
+
+            <div className="count">
+              <h3 className="red">330</h3>
+              <p>Negative interactions</p>
+
+            </div>
+
+
+          </div>
 
 
 
