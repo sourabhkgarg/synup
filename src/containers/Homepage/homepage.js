@@ -114,6 +114,19 @@ class Main extends React.Component{
 
 
     return (
+
+      <div>
+
+        <div className="review_container flex flex_center">
+
+
+
+
+
+
+         </div>
+
+
       <div className="review_container">
 
         <div className="flex flex_center filters">
@@ -157,6 +170,8 @@ class Main extends React.Component{
         </div>
 
         {reviewArr}
+
+      </div>
 
       </div>
     );
